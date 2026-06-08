@@ -1,0 +1,140 @@
+================================================================================
+ REFERENCES AND THIRD-PARTY NOTICES — AprilTag Cleaner
+================================================================================
+This file lists all third-party libraries and algorithms used by AprilTag
+Cleaner, together with their licenses. Original application code (app.py,
+build_windows_robust.bat) is the sole property of its author and is not
+covered by any of the licenses listed here.
+
+--------------------------------------------------------------------------------
+1. OpenCV  (opencv-contrib-python)
+--------------------------------------------------------------------------------
+Version  : >= 4.8
+Website  : https://opencv.org/
+Source   : https://github.com/opencv/opencv  /  https://github.com/opencv/opencv_contrib
+License  : Apache License, Version 2.0
+           https://www.apache.org/licenses/LICENSE-2.0
+
+Used for :
+  - Image I/O (cv2.imread, cv2.imwrite)
+  - Color-space conversions (cv2.cvtColor, COLOR_BGR2GRAY, COLOR_BGR2Lab, etc.)
+  - Mask drawing (cv2.fillConvexPoly)
+  - Image blending (cv2.addWeighted)
+  - Telea inpainting (cv2.inpaint with INPAINT_TELEA) — see algorithm ref. [A]
+  - Navier-Stokes inpainting (cv2.inpaint with INPAINT_NS) — see algorithm ref. [B]
+  - Shift-Map inpainting (cv2.xphoto.inpaint with INPAINT_SHIFTMAP) — see algorithm ref. [C]
+    Note: Shift-Map support requires the opencv-contrib-python package.
+
+--------------------------------------------------------------------------------
+2. NumPy
+--------------------------------------------------------------------------------
+Version  : >= 1.24
+Website  : https://numpy.org/
+Source   : https://github.com/numpy/numpy
+License  : BSD 3-Clause "New" or "Revised" License
+           https://opensource.org/licenses/BSD-3-Clause
+
+Used for : Array operations on images, mask creation, corner geometry
+           (np.zeros, np.where, np.rint, np.clip, np.linalg.norm, etc.)
+
+--------------------------------------------------------------------------------
+3. Pillow  (PIL)
+--------------------------------------------------------------------------------
+Version  : >= 10.0
+Website  : https://python-pillow.org/
+Source   : https://github.com/python-pillow/Pillow
+License  : HPND (Historical Permission Notice and Disclaimer)
+           https://raw.githubusercontent.com/python-pillow/Pillow/main/LICENSE
+
+Used for : Image preview display inside the Tkinter GUI
+           (Image.open, Image.thumbnail, ImageTk.PhotoImage)
+
+--------------------------------------------------------------------------------
+4. pupil-apriltags
+--------------------------------------------------------------------------------
+Version  : >= 1.0.4.post11
+Website  : https://github.com/pupil-labs/apriltags
+Source   : https://github.com/pupil-labs/apriltags
+License  : MIT License  (Python bindings by Pupil Labs)
+           https://opensource.org/licenses/MIT
+
+Underlying C library — AprilTag 3:
+  Authors  : The Regents of the University of Michigan
+  Source   : https://github.com/AprilRobotics/apriltag
+  License  : BSD 2-Clause "Simplified" License
+             https://opensource.org/licenses/BSD-2-Clause
+
+Used for : AprilTag family detection and corner extraction
+           (Detector, Detector.detect) — see algorithm ref. [D], [E], [F]
+
+--------------------------------------------------------------------------------
+5. PyInstaller  (build-time only)
+--------------------------------------------------------------------------------
+Version  : >= 6.0
+Website  : https://pyinstaller.org/
+Source   : https://github.com/pyinstaller/PyInstaller
+License  : GNU General Public License v2 or later (GPL-2.0+)
+           with the "Bootloader Exception":
+           Executables produced by PyInstaller are NOT considered derivative
+           works of PyInstaller and are therefore NOT subject to the GPL.
+           https://pyinstaller.org/en/stable/license.html
+
+Used for : Packaging the application into a standalone Windows executable.
+
+--------------------------------------------------------------------------------
+6. Python standard library  (tkinter, threading, os, sys, pathlib)
+--------------------------------------------------------------------------------
+Website  : https://www.python.org/
+License  : Python Software Foundation License, Version 2 (PSF-2.0)
+           https://www.python.org/psf/license/
+
+Used for : GUI framework (tkinter / ttk), background threading, file-system
+           operations, and path handling.
+
+================================================================================
+ ALGORITHM REFERENCES
+================================================================================
+
+[A] TELEA INPAINTING (cv2.INPAINT_TELEA)
+    Alexandru Telea,
+    "An Image Inpainting Technique Based on the Fast Marching Method,"
+    Journal of Graphics Tools, vol. 9, no. 1, pp. 23–34, 2004.
+    DOI: 10.1080/10867651.2004.10487596
+
+[B] NAVIER-STOKES INPAINTING (cv2.INPAINT_NS)
+    Marcelo Bertalmio, Andrea L. Bertozzi, Guillermo Sapiro,
+    "Navier-Stokes, Fluid Dynamics, and Image and Video Inpainting,"
+    Proceedings of the IEEE Conference on Computer Vision and Pattern
+    Recognition (CVPR), vol. 1, pp. 355–362, 2001.
+    DOI: 10.1109/CVPR.2001.990497
+
+[C] SHIFT-MAP INPAINTING (cv2.xphoto.INPAINT_SHIFTMAP)
+    Yoav HaCohen, Eli Shechtman, Dan B. Goldman, Dani Lischinski,
+    "Non-Rigid Dense Correspondence with Applications for Image Enhancement,"
+    ACM Transactions on Graphics (SIGGRAPH 2011), vol. 30, no. 4, article 70, 2011.
+    DOI: 10.1145/2010324.1964966
+
+[D] APRILTAG (tag36h11, tag25h9, tag16h5 families)
+    Edwin Olson,
+    "AprilTag: A Robust and Flexible Visual Fiducial System,"
+    Proceedings of the IEEE International Conference on Robotics and
+    Automation (ICRA), pp. 3400–3407, 2011.
+    DOI: 10.1109/ICRA.2011.5979561
+
+[E] APRILTAG 2 (detection pipeline improvements)
+    John Wang, Edwin Olson,
+    "AprilTag 2: Efficient and Robust Fiducial Detection,"
+    Proceedings of the IEEE/RSJ International Conference on Intelligent
+    Robots and Systems (IROS), pp. 4193–4198, 2016.
+    DOI: 10.1109/IROS.2016.7759617
+
+[F] APRILTAG 3 / STANDARD FAMILIES (tagStandard41h12, tagStandard52h13)
+    Maximilian Krogius, Alex Haggenmiller, Edwin Olson,
+    "Flexible Layouts for Fiducial Tags,"
+    Proceedings of the IEEE/RSJ International Conference on Intelligent
+    Robots and Systems (IROS), pp. 1898–1903, 2019.
+    DOI: 10.1109/IROS40897.2019.8968053
+
+================================================================================
+ END OF REFERENCES
+================================================================================
